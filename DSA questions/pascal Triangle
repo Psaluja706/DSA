@@ -1,0 +1,30 @@
+class Solution {
+    public List<List<Integer>> generate(int n) {
+        List<List<Integer>> result=new ArrayList<>();
+        List<Integer> f=new ArrayList<>();
+         f.add(1);
+         result.add(f);
+        if(n==1)
+        {
+           return result;
+        }
+         List<Integer> s=new ArrayList<>();
+            s.add(1);
+            s.add(1);
+         result.add(s);
+        for(int i=3;i<=n;i++)
+        {
+            List<Integer> ll = new ArrayList<>();
+            List<Integer> last=result.get(result.size()-1);
+            ll.add(1);
+            for(int j=0;j<last.size()-1;j++)
+            {
+                int sum=last.get(j)+last.get(j+1);
+                ll.add(sum);
+            }
+            ll.add(1);
+            result.add(ll);
+        }
+        return result;
+    }
+}
