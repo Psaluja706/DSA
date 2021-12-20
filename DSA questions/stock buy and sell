@@ -1,0 +1,13 @@
+class Solution {
+    public int maxProfit(int[] a) {
+        int maxP=Integer.MIN_VALUE;
+        int curmin=Integer.MAX_VALUE;
+        for(int i=0;i<a.length;i++)
+        {
+            curmin=Math.min(curmin,a[i]);
+            int cp=a[i]-curmin;
+            maxP=Math.max(maxP,cp);
+        }
+        return maxP;
+    }
+}
