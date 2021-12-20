@@ -1,0 +1,34 @@
+class Solution {
+    public void nextPermutation(int[] a) {
+       int n=a.length;
+        if(n==0 || n==1)
+            return;
+        int i=n-2;
+        while(i>=0 && a[i]>=a[i+1])
+            i--;
+        if(i>=0)
+        {
+            int j=n-1;
+            while(a[j]<=a[i])
+                j--;
+            swap(a,i,j);
+        }
+        reverse(a,i+1);
+    }
+    public  void swap(int a[],int i,int j)
+    {
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+    public void reverse(int a[],int start)
+    {
+        int end=a.length-1;
+        while(start<end)
+        {
+            swap(a,start,end);
+            start++;
+            end--;
+        }
+    }
+}
