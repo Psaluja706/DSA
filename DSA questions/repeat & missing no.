@@ -1,0 +1,41 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int[] repeatedNumber(final int[] A) {
+        int r[]=new int[2];
+        int c[]=new int[A.length+1];
+        for(int i=0;i<A.length;i++)
+        {
+            c[A[i]]++;
+        }
+        for(int i=1;i<=A.length;i++)
+        {
+            if(c[i]>=2)
+            r[0]=i;
+            if(c[i]==0)
+            r[1]=i;
+        }
+        return r;
+    }
+}
+or
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int[] repeatedNumber(final int[] A) {
+        int r[]=new int[2];
+        Set<Integer> s= new HashSet<>();
+        int max=0;
+        for(int i=0;i<A.length;i++)
+        {
+            if(s.contains(A[i]))
+            r[0]=A[i];
+            else
+            s.add(A[i]);
+        }
+        for(int i=1;i<=A.length;i++)
+        {
+            if(!s.contains(i))
+            r[1]=i;
+        }
+        return r;
+    }
+}
